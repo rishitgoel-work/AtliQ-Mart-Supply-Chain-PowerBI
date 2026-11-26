@@ -4,8 +4,10 @@
 An end-to-end interactive Power BI dashboard built to analyse delivery service-level performance across **57,096 order lines**, **3 cities** (Surat, Ahmedabad, Vadodara), and **15 retail chains** for an FMCG distributor. The report diagnoses why On-Time In-Full (OTIF) delivery is missing contractual targets and pinpoints SKU-level inventory bottlenecks.
 
 ## Tech Stack & Data Model
-* **Tools:** Microsoft Power BI, DAX, Power Query, Star Schema Data Modeling
-* **Data Architecture:** 6-table Star Schema connecting `fact_orders_aggregate` and `fact_order_lines` with `dim_customers`, `dim_products`, `dim_date`, and `dim_targets_orders`
+
+* **Tools:** Microsoft Power BI (Desktop & Service), PostgreSQL (Neon Cloud), DAX, Power Query (M), Star Schema Data Modeling
+* **Data Architecture:** Cloud-hosted 6-table Star Schema in **Neon PostgreSQL** (`aws-ap-southeast-1`) connecting `fact_orders_aggregate` and `fact_order_lines` with `dim_customers`, `dim_products`, `dim_date`, and `dim_targets_orders`
+* **Cloud Automation:** Direct PostgreSQL connector in Power BI Service with scheduled daily refresh (9:00 AM IST) — zero local CSV dependencies or on-premises gateways
 * **Custom DAX Measures (10 KPIs):** `OTIF %`, `OTIF Target %`, `On-Time %`, `On-Time Target %`, `In-Full %`, `In-Full Target %`, `LIFR %` (Line Item Fill Rate), `VOFR %` (Volume Order Fill Rate), `Total Orders`, and `Total Order Lines`
 
 ## Key Business Insights
